@@ -1,0 +1,24 @@
+AWSTemplateversion: '2010-09-09' #exampledate
+ Resources:
+  S3Bucket:
+   Type: 'AWS::S3::Bucket'
+   Properties:
+     AccesControl: Private
+     LifeCycleConfiguration:
+      Rules:
+       - Id: GlacierRule
+         Prefix: glacier
+         Status: Enabled
+         ExpirationInDates: 365
+         Transitions:
+          - TransitioninDays: 1
+            StorageClass: Glacier
+Outputs:
+ BucketName:
+  Value: !Ref S3Bucket
+  Description: any Description
+
+
+
+Type: 'AWS::S3::Bucket'
+ Properties: {}

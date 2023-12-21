@@ -1,0 +1,53 @@
+Type: 'AWS::DynamoDB::Table'
+ Properties:
+  AttributeDefinitions: #Specifies the attribute definitions for the table. These are the names and types of the primary key attributes.
+  BillingMode: #Specifies the billing mode for the table, which could be either PROVISIONED or PAY_PER_REQUEST.
+  ContributorInsideSpecifications:
+  DeletionProtectionEnabled: #When enabled, the table cannot be deleted.
+  GlobalSecondaryIndexes:
+  ImportSourceSpecifications:
+  KeySchema: #Specifies the attributes that make up the primary key of the table and their key types (either HASH or RANGE).
+  KinesisStreamSpecifications:
+  LocalSecondaryIndexes:
+  PointInTimeRecoverySpecification:
+  ProvisionedThroughput:
+  SSESpecification: #Specifies the configuration for server-side encryption.
+  StreamSpecification:
+  TableClass: #Specifies the class of the table. This might refer to the type of resources used to store the table data.
+  TableName:
+  Tags:
+  TimeToLiveSpecification: #Specifies configurations for Time to Live (TTL) settings on the table.
+
+
+Type: 'AWS::DynamoDB::Table'
+ Properties:
+  BillingMode: PAY_PER_REQUEST
+  AttributeDefinitions:
+        - AttributeName: pk
+          AttributeType: S
+        - AttributeName: sk
+          AttributeType: S
+      KeySchema:
+        - AttributeName: pk
+          KeyType: HASH
+        - AttributeName: sk
+          KeyType: RANGE
+
+#Chatapp
+Type: 'AWS::DynamoDB::Table'
+ Properties:
+  AttributeDefinitions:
+    - AttributeName: Alias
+      AttributeType: S
+    - AttributeName: Timestamp
+      AttributeType: S
+  KeySchema:
+    - AttributeName: Alias 
+      KeyType: HASH
+    - AttributeName: Timestamp
+      KeyType: RANGE
+  ProvisionedThroughput:
+    ReadCapacityUnits: 5
+    WriteCapacityUnits: 5
+  TableName: Posts
+  

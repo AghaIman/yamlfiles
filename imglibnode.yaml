@@ -1,0 +1,22 @@
+AWSTemplateFormatVersion: '2010-09-09'
+ Parameters:
+  S3BucketName:
+   Type: String
+   Properties:
+    AccessControl: #Public/Private
+  DynamoDBTable:
+   Type: 'AWS::DynamoDB::Table'
+   Properties:
+    AttributeDefinitions:
+     - AttributeName: S3ObjectKey
+       AttributeType: S
+       AttributeName: Category
+       AttributeType: S
+    KeySchema:
+     - AttributeName: S3ObjectKey
+       KeyType: HASH
+    ProvisionedThroughput:
+     ReadCapacityUnits: #OfOurChoice
+     WriteCapacityUnits: #OfOurChoice
+    TableName: Images
+

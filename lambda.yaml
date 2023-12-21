@@ -1,0 +1,86 @@
+Type: 'AWS::Lambda::Function'
+ Properties:
+  Architecture: #Specifies the architecture (e.g., x86_64) of the Lambda function's runtime environment.
+  Code: #Specifies the location of your function's deployment package (ZIP file) in Amazon S3. 
+  CodeSignInConfiguration:
+  Enivronment: #Specifies environment variables that are accessible from your Lambda function.
+  DeadLetterConfiguration:
+  Description:
+  EphemeralStorage:
+  FileSystemConfigs:
+  FunctionName:
+  Handler: #Specifies the name of the function (within your deployment package) that Lambda calls to begin execution.
+  ImageConfig:
+  KmsKeyArn:
+  Layers:
+  LoggingConfig:
+  MemorySize:
+  PackageType:
+  ReservedConcurrentExecutions:
+  Role:
+  Runtime:
+  RuntimeManagementConfig:
+  SnapStart:
+  Tags:
+  Timeout:
+  TracingConfig:
+  VpcConfig:
+
+
+Type: 'AWS::Lambda::Function'
+ Properties:
+  Runtime:
+  Handler:
+  Role:
+  Environment:
+   Variables:
+    TableName:
+  Code:
+    
+
+#Chatapp
+AWSTemplateVersion: '2010-09-09'
+Parameters:
+ S3BucketName:
+  Type: String
+ IAMRoleARN:
+  Type: String
+Resources:  
+ LambdaFunctionName:
+  Type: 'AWS::Lambda::Function'
+   Properties:
+    Code:
+     S3Bucket:
+      Ref: S3BucketName
+     S3Key:
+    Description: Adds post
+    FunctionName: AddPost
+    Handler: index.handler
+    Role:
+     Ref: IAMRoleARN
+    Runtime: node.js
+    Timeout: 30
+
+
+AWSTemplateFormatVersion: '2010-09-09'
+Parameters:
+ S3BucketName:
+  Type: String
+ IAMRoleARN:
+  Type: String
+Resources:
+ LambdaFunctionName:
+  Type: 'AWS::Lambda::Function'
+   Properties:
+    Code:
+     S3Bucket: 
+      Ref: S3BucketName
+     S3Key:
+    Description: Deletes Post
+    Handler: index.handler
+    Role:
+     Ref: IAMRoleARN
+    FunctionName: DeletePost
+    Runtime: node.js
+    Timeout: 30
+  

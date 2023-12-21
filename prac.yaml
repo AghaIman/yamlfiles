@@ -1,0 +1,41 @@
+AWSTemplateVersion: '2010-09-09'
+ Resources:
+  S3Bucket:
+   Type: 'AWS::S3::Bucket'
+    Properties:
+     AccessControl: Private
+     LifeCycleConfiguration:
+      Rules:
+       - ID: GlacierRule
+         Prefix: Glacier
+         Status: Enabled
+         ExpirationInDays: 365
+         Transitions:
+          - TransitionInDays: 1
+            StorageType: Glacier
+Output:
+ BucketName:
+  Value: !Ref S3Bucket
+  Description: anydescription
+
+
+ Type: 'AWS::Lambda::Function'
+  Properties:
+   Handler:
+   Runtime:
+   Role:
+   Environment:
+     - Variable:
+        tableName:
+   Code:
+
+
+  Type: 'AWS::DyanmoDB::Table'
+   Properties:
+    BillingMode:
+    AttributeDefinitions:
+      - AttributeName:
+        AttributeType:
+    KeySchema:
+      - AttributeName:
+        KeyType:
