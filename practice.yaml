@@ -1,0 +1,35 @@
+AWSTemplateFormatVersion: '2010-09-09'
+ Resources:
+  S3Bucket:
+   Description: This is the S3bucket on which we will do the logging part
+   Type: String
+   Properties:
+    AccessControl: #Public/Private
+  DynamoDBTable:
+   Description: This is the table where we will store the data from the function
+   Type: 'AWS::DyanmoDB::Table'
+   Properties:
+    AttributeDefinitions:
+      - AttributeName: xyz
+        AttributeType: S
+    KeySchema:
+      - AttributeName: xyz
+        KeyType: HASH
+    ProvisionedThroughput:
+      ReadCapacityUnits:
+      WriteCapacityUnits:
+    TableName: TABLExyz
+  LambdaFunction:
+   Description: This is the lambda function
+   Type: 'AWS::Lambda::Function'
+   Properties:
+    Runtime:
+    Handler:
+    FunctionName: Lambdafunc
+    Code:
+     S3bucket:
+      Ref: S3BucketName
+     S3Key:
+     http:
+      path: #path
+      method: get

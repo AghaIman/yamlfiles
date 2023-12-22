@@ -19,6 +19,5 @@ Outputs:
   Description: any Description
 
 
-
 Type: 'AWS::S3::Bucket'
  Properties: {}
