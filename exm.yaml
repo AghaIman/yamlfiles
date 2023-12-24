@@ -1,0 +1,48 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Resources:
+ S3BucketName:
+  Type: 'AWS::S3::Bucket'
+  Description: Used to store user-uploaded files
+  Properties:
+   AccessControl: #Private/Public
+ DynamoDBTable:
+  Type: 'AWS::DynamoDB::Table'
+  Description: Stores metadata about the uploaded files
+  Properties:
+    AttributeDefinitions:
+      - AttributeName:
+        AttributeType:
+      - AttributeName:
+        AttributeType:
+    KeySchema:
+      - AttributeName:
+        KeyType:
+    ProvisionedThroughput:
+     ReadCapacityUnits:
+     WriteCapacityUnits:
+    TableName: #NameOfTable
+  LambdaFunction:
+   Type: 'AWS::Lambda::Function'
+   Description: Triggered on S3 file upload events to perform additional processing.
+   Properties:
+    Runtime:
+    Role: 
+     Ref: LambdaExecutionRole.ARN
+    Handler:
+    Code:
+     S3Bucket: S3BucketName
+     S3Key:
+    FunctionName: #NameOfTheFunction
+  LambdaExecutionRole:
+   Type: 'AWS::IAM::Role'
+   Properties:
+    AssumeRolePolicyDocument:
+     Statement:
+      - Effect:
+        Action:
+    Description:
+    Policies:
+     - Policy:
+    RoleName:
+    Tags:
+     - Tag:
