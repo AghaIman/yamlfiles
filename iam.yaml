@@ -1,0 +1,18 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Resources:
+ LambdaFunctionRole:
+  Type: 'AWS::IAM::Role'
+    Properties:
+      AssumeRolePolicyDocument:
+       Statement:
+        - Effect:
+          Action:
+      Description:
+      Path:
+      PermissionsBoundary:
+      MaxSessionDuration:
+      Policies:
+        - Policy:
+      RoleName: #NameOfTheRole
+      Tags:
+        - Tag:

@@ -43,6 +43,6 @@ Resources:
     Description:
     Policies:
      - Policy:
-    RoleName:
+    RoleName: #NameOfTheRole
     Tags:
      - Tag:
